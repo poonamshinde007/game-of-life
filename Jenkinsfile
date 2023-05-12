@@ -3,7 +3,7 @@ pipeline{
 	      
 		  label{
 		    label "built-in"
-			customWorkspcae "/mnt/project2"
+			customWorkspace "/mnt/project3"
 			   }
 		}
 		stages{
@@ -11,7 +11,7 @@ pipeline{
 		   steps {
             
 		     sh "mvn clean install"
-		     sh "cp -r /mnt/project2/gameoflife-web/target/gameoflife.war /mnt/server/apache-tomcat-9.0.75/webapps"
+		     sh "cp -r /mnt/project3/gameoflife-web/target/gameoflife.war /mnt/server/apache-tomcat-9.0.75/webapps"
 
 		        }
 		      }
