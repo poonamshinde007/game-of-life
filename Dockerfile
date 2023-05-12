@@ -1,19 +1,8 @@
-FROM node:14
+FROM tomcat:8-jre8
 
-# Setting working directory. All the path will be relative to WORKDIR
-WORKDIR /usr/src/app
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+COPY target/gameoflife.war /usr/local/tomcat/webapps/ROOT.war
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
-COPY . .
-
-EXPOSE 3000
-CMD [ "node", "index.js" ]
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
